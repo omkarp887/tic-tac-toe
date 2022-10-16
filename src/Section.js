@@ -48,7 +48,7 @@ const Section = () => {
 			alert('already clicked');
 			return;
 		}
-
+		if(winner)return;
 		let squares = [...cells];
 
 		if (turn === 'X') {
