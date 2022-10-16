@@ -3,12 +3,14 @@ import './App.css'
 import './Section.css'
 import { useState } from 'react'
 const Section = () => {
+	// 1 we will initilase turn dfunctio
 	const [turn, setTurn] = useState('x');
 	const [cells, setCells] = useState(Array(9).fill(''));
 	const [winner, setWinner] = useState();
 
 	const checkForWinner = (squares) => {
 		let combos = {
+			//5 across and down daigonal any pattern is true then we will declare the winner
 			across: [
 				[0, 1, 2],
 				[3, 4, 5],
@@ -24,8 +26,9 @@ const Section = () => {
 				[2, 4, 6],
 			],
 		};
-
+		//3 forin function where combo is key and combos is objext to that key
 		for (let combo in combos) {
+			//4 in objext combos we will use foreach function to iterate as it does not return any new value
 			combos[combo].forEach((pattern) => {
 				if (
 					squares[pattern[0]] === '' ||
@@ -42,13 +45,14 @@ const Section = () => {
 			});
 		}
 	};
-
+	//2 we will click function
 	const handleClick = (num) => {
 		if (cells[num] !== '') {
 			alert('already clicked');
 			return;
 		}
-
+		if(winner)return;
+		//if empty use spread operator
 		let squares = [...cells];
 
 		if (turn === 'X') {
@@ -93,6 +97,7 @@ const Section = () => {
                     <Cell num={8}/>
                 </tr>
             </table>
+			{/* shortcircuit function */}
             {winner && (
 				<>
 					<h1>{winner} is the winner!</h1>
