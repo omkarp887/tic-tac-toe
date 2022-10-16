@@ -52,7 +52,7 @@ const Section = () => {
 			return;
 		}
 		if(winner)return;
-		//if empty use spread operator
+
 		let squares = [...cells];
 
 		if (turn === 'X') {
